@@ -24,7 +24,13 @@ hornAnimal.prototype.render = function () {
   $newSection.find('h2').text(this.title);
 
   // fill the p with the description
-  $newSection.find('p').text(this.description);
+  $newSection.find('h3').text(this.description);
+
+  // fill the h2 with the keyword
+  $newSection.find('h4').text(this.keyword);
+
+  // fill the p with the horns
+  $newSection.find('p').text(this.horns);
 
   // fill the src of the img to the image_url
   $newSection.find('img').attr('src', this.image_url);
@@ -40,7 +46,6 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
     animal.forEach(value => {
       new hornAnimal(value).render();
     })
-
   })
 
 // data does not exist down here
