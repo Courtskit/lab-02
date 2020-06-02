@@ -39,6 +39,27 @@ hornAnimal.prototype.render = function () {
   $('main').append($newSection);
 }
 
+function dropDown() {
+
+  let keywords = [];
+  //grab drop down ID
+
+  allHornAnimals.forEach((hornAnimal, i) => {
+    let nameOfKey = hornAnimal.keyword;
+    // ! - does the opposite
+    if (!keywords.includes(nameOfKey)) {
+      keywords.push(nameOfKey);
+    }
+
+  })
+  // const menu = $('#dropDownMenu').html();
+  for (let i = 0; i < keywords.length; i++) {
+    let nameOfKeyword = keywords[i];
+    const $dropList = $(`<option value=${nameOfKeyword}>${nameOfKeyword}</option>`);
+    $('#dropDownMenu').append($dropList);
+  }
+}
+
 
 // I need to get the page-1.json and make new object instances with it
 $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
@@ -46,6 +67,12 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
     animal.forEach(value => {
       new hornAnimal(value).render();
     })
+    dropDown();
+    // if keyword equals blank.. append it
   })
-
 // data does not exist down here
+
+
+//add event listener to dropdown
+//create event handler to filter images based on options in dropdown
+
