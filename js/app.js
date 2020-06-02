@@ -18,7 +18,7 @@ hornAnimal.prototype.render = function () {
   const myTemplate = $('#photo-template').html();
 
   // putting jquery template into new section
-  const $newSection = $(`<section>${myTemplate}</section>`);
+  const $newSection = $(`<section class='animal'>${myTemplate}</section>`);
 
   // fill the h2 with the title
   $newSection.find('h2').text(this.title);
@@ -69,10 +69,16 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
     })
     dropDown();
     // if keyword equals blank.. append it
-  })
+  });
 // data does not exist down here
 
 
 //add event listener to dropdown
-//create event handler to filter images based on options in dropdown
-
+$('#dropDownMenu').on('change', function () {
+  $('.animal').remove();
+  allHornAnimals.forEach(hornAnimal => {
+    if (hornAnimal.keyword === this.value) {
+      hornAnimal.render();
+    }
+  })
+});
