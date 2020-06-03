@@ -18,18 +18,18 @@ Estimate of time needed to complete: 1.5 hours
 
 Start time: 2:35pm
 
-Finish time: 4:05pm
+Finish time: 4:50pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2 hours 15 minutes
 
 
 
 Number and name of feature: Style the application
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 20 minutes
 
-Start time: 
+Start time: 5:00pm
 
-Finish time: 
+Finish time: 5:20pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 5:20pm
