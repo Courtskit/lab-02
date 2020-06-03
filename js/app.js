@@ -11,6 +11,42 @@ function hornAnimal(obj) {
   this.horns = obj.horns;
   allHornAnimals.push(this);
 }
+/////////////////////////////////////////////////////////////////
+// // another way to write constructor
+// function hornAnimal(obj){
+//   for(let key in obj){
+//     this[key] = obj[key]
+//   }
+//   hoods.push(this);
+// }
+
+////////////////////////////////////////////////////////////////
+// MUSTACHE 
+
+// $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
+//   .then.forEach(hornAnim => {
+//     new hornAnimal(hornAnim);
+//   });
+
+
+// hornAnimal.prototype.toHTML = function () {
+//   // get template from html
+//   let template = $('#photo-template').html();
+//   // use mustache to get html by merging the template with the data
+//   let html = Mustache.render(template, this);
+//   // return
+//   return html;
+// }
+
+// allHornAnimals.forEach(hornAnimal => {
+//   // will create html
+//   let animalHtml = hornAnimal.toHtml();
+//   // append to the section
+//   $('#photo-template').append(animalHtml)
+// })
+
+//////////////////////////////////////////////////////////////
+
 //  render animals image title and description
 hornAnimal.prototype.render = function () {
   console.log('in the render function')
@@ -71,6 +107,14 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
     // if keyword equals blank.. append it
   });
 // data does not exist down here
+$.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
+  .then(animal => {
+    animal.forEach(value => {
+      new hornAnimal(value).render();
+    })
+    dropDown();
+    // if keyword equals blank.. append it
+  });
 
 
 //add event listener to dropdown
