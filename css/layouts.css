@@ -1,0 +1,20 @@
+header{
+  text-align: center;
+  margin: 50px;
+  font-family: 'Open Sans', sans-serif;
+  float: left;
+}
+
+section{
+  display: inline-block;
+  width: 200px;
+  margin: 30px 4px;
+}
+
+section h2{
+  font-size: large;
+}
+
+#photo-template{
+  width: .01px;
+}
