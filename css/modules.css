@@ -1,3 +1,14 @@
 img{
   width: 200px;
+  border-radius: 7px;
+}
+
+h1{
+  font-size: 30px;
+  padding-bottom: 15px;
+  font-weight: bold;
+}
+
+section h2{
+  font-size: large;
 }
