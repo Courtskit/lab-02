@@ -80,7 +80,7 @@ function dropDown() {
   let keywords = [];
   //grab drop down ID
 
-  allHornAnimals.forEach((hornAnimal, i) => {
+  allHornAnimals.forEach((hornAnimal) => {
     let nameOfKey = hornAnimal.keyword;
     // ! - does the opposite
     if (!keywords.includes(nameOfKey)) {
@@ -103,7 +103,7 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
     animal.forEach(value => {
       new hornAnimal(value).render();
     })
-    dropDown();
+    // dropDown();
     // if keyword equals blank.. append it
   });
 // data does not exist down here
