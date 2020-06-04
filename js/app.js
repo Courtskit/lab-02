@@ -57,12 +57,14 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
     animal.forEach(hornAnim => {
       new HornAnimal(hornAnim, allHornAnimals);
     })
+    let $animalDiv = $('<div id="animal"></div>')
     allHornAnimals.forEach(value => {
       // will create html
       let animalHtml = value.toMustacheTemplate();
       // append to the section
-      $('main').append(animalHtml)
+      $animalDiv.append(animalHtml)
     });
+    $('main').append($animalDiv)
   });
 
 $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
@@ -70,12 +72,14 @@ $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
     animal.forEach(hornAnim => {
       new HornAnimal(hornAnim, allHornAnimals2);
     })
+    let $animalDiv = $('<div id="animal"></div>')
     allHornAnimals2.forEach(value => {
       // will create html
       let animalHtml = value.toMustacheTemplate();
       // append to the section
-      $('main').append(animalHtml)
+      $animalDiv.append(animalHtml)
     });
+    $('main').append($animalDiv)
     dropDown()
   });
 
@@ -150,23 +154,27 @@ $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
 
 
 $('.allHornAnimalsButton').click(() => {
-  $('.animal').remove();
+  $('#animal').remove();
+  let $animalDiv = $('<div id="animal"></div>')
   allHornAnimals.forEach(value => {
     // will create html
     let animalHtml = value.toMustacheTemplate();
     // append to the section
-    $('main').append(animalHtml)
+    $animalDiv.append(animalHtml)
   });
+  $('main').append($animalDiv)
 })
 
 
 $('.allHornAnimalsButton2').click(() => {
-  $('.animal').remove();
+  $('#animal').remove();
+  let $animalDiv = $('<div id="animal"></div>')
   allHornAnimals2.forEach(value => {
     // will create html
     let animalHtml = value.toMustacheTemplate();
     // append to the section
-    $('main').append(animalHtml)
+    $animalDiv.append(animalHtml)
   });
+  $('main').append($animalDiv)
 })
 
