@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/modules.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <script id="photo-template" type="text/x-tmpl-mustache">
-    <div>
+    <div class="animal">
       <h2>{{name}}</h2>
         <img src="{{image_url}}"></img>
         <p> {{---}}</p>
@@ -27,9 +27,15 @@
     <select id="dropDownMenu">
       <option value="">Select</option>
     </select>
+
     <div>
-      <button class="allHornAnimalsButton"></button>
-      <button class="allHornAnimals2Button"></button>
+      <button id="name-sort" value="names">Sort by Name</button>
+      <button id="horn-sort" value="horns">Sort by Horns</button>
+    </div>
+
+    <div>
+      <button id="allHornAnimalsButton">Page 1</button>
+      <button id="allHornAnimals2Button">Page 2</button>
     </div>
   </header>
   <main></main>
