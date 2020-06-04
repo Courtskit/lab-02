@@ -10,6 +10,15 @@
   <link rel="stylesheet" href="css/layouts.css">
   <link rel="stylesheet" href="css/modules.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script id="photo-template" type="text/x-tmpl-mustache">
+    <div>
+      <h2>{{name}}</h2>
+        <img src="{{image_url}}"></img>
+        <p> {{---}}</p>
+        <p> {{---}}</p>
+    {{{body}}}
+    </div>
+  </script>
 </head>
 
 <body>
@@ -18,20 +27,15 @@
     <select id="dropDownMenu">
       <option value="">Select</option>
     </select>
+    <div>
+      <button class="allHornAnimalsButton"></button>
+      <button class="allHornAnimals2Button"></button>
+    </div>
   </header>
-  <main>
-
-    <section id="photo-template">
-      <h2></h2>
-      <h3></h3>
-      <h4></h4>
-      <p></p>
-      <img src="" alt="">
-    </section>
-
-  </main>
+  <main></main>
   <footer></footer>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://unpkg.com/mustache@latest"></script>
   <script src="js/app.js"></script>
 </body>
 
