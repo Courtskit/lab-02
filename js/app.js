@@ -80,6 +80,13 @@ $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
   });
 
 
+
+
+
+
+
+
+
 //  render animals image title and description
 // HornAnimal.prototype.render = function () {
 //   console.log('in the render function')
@@ -142,14 +149,24 @@ $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
 // });
 
 
-// $('.allHornAnimalsButton').click(() => {
-//   $('.animal').remove();
-//   allHornAnimals.forEach(animal => animal.render())
-// })
+$('.allHornAnimalsButton').click(() => {
+  $('.animal').remove();
+  allHornAnimals.forEach(value => {
+    // will create html
+    let animalHtml = value.toMustacheTemplate();
+    // append to the section
+    $('main').append(animalHtml)
+  });
+})
 
 
-// $('.allHornAnimalsButton2').click(() => {
-//   $('.animal').remove();
-//   // allHornAnimals2.forEach(animal => animal.render())
-// })
+$('.allHornAnimalsButton2').click(() => {
+  $('.animal').remove();
+  allHornAnimals2.forEach(value => {
+    // will create html
+    let animalHtml = value.toMustacheTemplate();
+    // append to the section
+    $('main').append(animalHtml)
+  });
+})
 
