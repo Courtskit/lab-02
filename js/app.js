@@ -3,6 +3,7 @@
 // array of all animals
 let allHornAnimals = [];
 let allHornAnimals2 = [];
+
 // constructor of horn animals
 function HornAnimal(obj, array) {
   this.image_url = obj.image_url;
@@ -33,8 +34,16 @@ function dropDown() {
     if (!keywords.includes(nameOfKey)) {
       keywords.push(nameOfKey);
     }
-
   })
+
+  allHornAnimals2.forEach((HornAnimalValue) => {
+    let nameOfKey2 = HornAnimalValue.keyword;
+    // ! - does the opposite
+    if (!keywords.includes(nameOfKey2)) {
+      keywords.push(nameOfKey2);
+    }
+  })
+
   // const menu = $('#dropDownMenu').html();
   for (let i = 0; i < keywords.length; i++) {
     let nameOfKeyword = keywords[i];
@@ -49,6 +58,19 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
       new HornAnimal(hornAnim, allHornAnimals);
     })
     allHornAnimals.forEach(value => {
+      // will create html
+      let animalHtml = value.toMustacheTemplate();
+      // append to the section
+      $('main').append(animalHtml)
+    });
+  });
+
+$.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
+  .then(animal => {
+    animal.forEach(hornAnim => {
+      new HornAnimal(hornAnim, allHornAnimals2);
+    })
+    allHornAnimals2.forEach(value => {
       // will create html
       let animalHtml = value.toMustacheTemplate();
       // append to the section
@@ -109,14 +131,14 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
 //   });
 
 
-//add event listener to dropdown
+// add event listener to dropdown
 // $('#dropDownMenu').on('change', function () {
 //   $('.animal').remove();
-//   // allHornAnimals.forEach(HornAnimal => {
-//   //   // if (HornAnimal.keyword === this.value) {
-//   //   //   HornAnimal.render();
-//   //   // }
-//   // })
+//   allHornAnimals.forEach(HornAnimal => {
+//     if (HornAnimal.keyword === this.value) {
+//       HornAnimal.render();
+//     }
+//   })
 // });
 
 
