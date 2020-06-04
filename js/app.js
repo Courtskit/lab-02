@@ -3,7 +3,8 @@
 // array of all animals
 let allHornAnimals = [];
 let allHornAnimals2 = [];
-
+let page1 = true;
+let page2 = false;
 // constructor of horn animals
 function HornAnimal(obj, array) {
   this.image_url = obj.image_url;
@@ -19,8 +20,8 @@ HornAnimal.prototype.toMustacheTemplate = function () {
   let template = $('#photo-template').html();
   // use mustache to get html by merging the template with the data
   let html = Mustache.render(template, this);
-  // return
-  return html;
+
+  $('main').append(html);
 }
 
 function dropDown() {
@@ -35,6 +36,22 @@ function dropDown() {
       keywords.push(nameOfKey);
     }
   })
+
+  // add event listener to dropdown
+  $('#dropDownMenu').on('change', function () {
+    $('.animal').remove();
+    allHornAnimals.forEach(HornAnimal => {
+      if (HornAnimal.keyword === this.value) {
+        HornAnimal.toMustacheTemplate();
+      }
+    })
+
+    allHornAnimals2.forEach(HornAnimal => {
+      if (HornAnimal.keyword === this.value) {
+        HornAnimal.toMustacheTemplate();
+      }
+    })
+  });
 
   allHornAnimals2.forEach((HornAnimalValue) => {
     let nameOfKey2 = HornAnimalValue.keyword;
@@ -51,6 +68,88 @@ function dropDown() {
     $('#dropDownMenu').append($dropList);
   }
 }
+
+// sort the images by their names
+$('#name-sort').on('click', function () {
+  $('.animal').remove();
+
+  if (this.value === 'names') {
+
+    if (page1) {
+      allHornAnimals.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        } else if (a.name < b.name) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      allHornAnimals.forEach(animal => animal.toMustacheTemplate());
+    } else if (page2) {
+      allHornAnimals2.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        } else if (a.name < b.name) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      allHornAnimals2.forEach(animal => animal.toMustacheTemplate());
+    }
+  }
+})
+
+
+// sort the images by their number of horns
+$('#horn-sort').on('click', function () {
+  $('.animal').remove();
+
+  if (this.value === 'horns') {
+
+    if (page1) {
+      allHornAnimals.sort((a, b) => {
+        if (a.horns > b.horns) {
+          return -1;
+        } else if (a.horns < b.horns) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      allHornAnimals.forEach(animal => animal.toMustacheTemplate());
+    } else if (page2) {
+      allHornAnimals2.sort((a, b) => {
+        if (a.horns > b.horns) {
+          return -1;
+        } else if (a.horns < b.horns) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      allHornAnimals2.forEach(animal => animal.toMustacheTemplate());
+    }
+  }
+})
+
+// page left  
+$('#allHornAnimalsButton').click(() => {
+  page1 = true;
+  page2 = false;
+  $('.animal').remove();
+  allHornAnimals.forEach(animal => animal.toMustacheTemplate())
+})
+
+// page right
+$('#allHornAnimals2Button').click(() => {
+  page1 = false;
+  page2 = true;
+  $('.animal').remove();
+  allHornAnimals2.forEach(animal => animal.toMustacheTemplate())
+})
+
 
 $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
   .then(animal => {
@@ -80,76 +179,7 @@ $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
   });
 
 
-//  render animals image title and description
-// HornAnimal.prototype.render = function () {
-//   console.log('in the render function')
-//   // grabbing ID from HTML
-//   const myTemplate = $('#photo-template').html();
-
-//   // putting jquery template into new section
-//   const $newSection = $(`<section class='animal'>${myTemplate}</section>`);
-
-//   // fill the h2 with the title
-//   $newSection.find('h2').text(this.title);
-
-//   // fill the p with the description
-//   $newSection.find('h3').text(this.description);
-
-//   // fill the h2 with the keyword
-//   $newSection.find('h4').text(this.keyword);
-
-//   // fill the p with the horns
-//   $newSection.find('p').text(this.horns);
-
-//   // fill the src of the img to the image_url
-//   $newSection.find('img').attr('src', this.image_url);
-
-//   // append to the DOM
-//   $('main').append($newSection);
-// }
 
 
-// WRAP AJAX IN FUNCTION
 
-// // I need to get the page-1.json and make new object instances with it
-// $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
-//   .then(animal => {
-//     animal.forEach(value => {
-//       new HornAnimal(value, allHornAnimals);
-//     })
-//     // dropDown();
-//     // if keyword equals blank.. append it
-//   });
-// // data does not exist down here
-// $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
-//   .then(animal => {
-//     animal.forEach(value => {
-//       new HornAnimal(value, allHornAnimals2);
-//     })
-//     dropDown();
-//     // if keyword equals blank.. append it
-//   });
-
-
-// add event listener to dropdown
-// $('#dropDownMenu').on('change', function () {
-//   $('.animal').remove();
-//   allHornAnimals.forEach(HornAnimal => {
-//     if (HornAnimal.keyword === this.value) {
-//       HornAnimal.render();
-//     }
-//   })
-// });
-
-
-// $('.allHornAnimalsButton').click(() => {
-//   $('.animal').remove();
-//   allHornAnimals.forEach(animal => animal.render())
-// })
-
-
-// $('.allHornAnimalsButton2').click(() => {
-//   $('.animal').remove();
-//   // allHornAnimals2.forEach(animal => animal.render())
-// })
 

@@ -1,20 +1,37 @@
 header{
-  text-align: center;
-  margin: 50px;
   font-family: 'Open Sans', sans-serif;
-  float: left;
+  text-align: center;
+  display: block;
+  width: 960px;
 }
 
-section{
-  display: inline-block;
-  width: 200px;
-  margin: 30px 4px;
+
+
+/* ///////////// */
+
+img{
+  width: 170px;
+  border-radius: 7px;
+  margin: 30px;
 }
 
-section h2{
-  font-size: large;
+h1{
+  font-size: 30px;
+  padding-bottom: 18px;
+  font-weight: bold;
 }
 
-#photo-template{
-  width: .01px;
+.animal{
+  font-size: 18px;
+  border: 2px solid coral;
+  width: 250px;
+  margin: 10px;
+  display: flex inline;
+  flex-wrap: wrap;
+}
+
+main{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
