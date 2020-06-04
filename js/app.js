@@ -57,14 +57,14 @@ $.ajax('data/page-1.json', { method: 'GET', dataType: 'JSON' })
     animal.forEach(hornAnim => {
       new HornAnimal(hornAnim, allHornAnimals);
     })
-    let $animalDiv = $('<div id="animal"></div>')
+
     allHornAnimals.forEach(value => {
       // will create html
       let animalHtml = value.toMustacheTemplate();
       // append to the section
-      $animalDiv.append(animalHtml)
+      $('main').append(animalHtml)
     });
-    $('main').append($animalDiv)
+
   });
 
 $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
@@ -72,14 +72,13 @@ $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
     animal.forEach(hornAnim => {
       new HornAnimal(hornAnim, allHornAnimals2);
     })
-    let $animalDiv = $('<div id="animal"></div>')
-    allHornAnimals2.forEach(value => {
-      // will create html
-      let animalHtml = value.toMustacheTemplate();
-      // append to the section
-      $animalDiv.append(animalHtml)
-    });
-    $('main').append($animalDiv)
+
+    // allHornAnimals2.forEach(value => {
+    //   // will create html
+    //   let animalHtml = value.toMustacheTemplate();
+    //   // append to the section
+    //   $('main').append(animalHtml)
+    // });
     dropDown()
   });
 
@@ -154,27 +153,27 @@ $.ajax('data/page-2.json', { method: 'GET', dataType: 'JSON' })
 
 
 $('.allHornAnimalsButton').click(() => {
-  $('#animal').remove();
-  let $animalDiv = $('<div id="animal"></div>')
+  $('main').empty();
+console.log('button1')
   allHornAnimals.forEach(value => {
     // will create html
     let animalHtml = value.toMustacheTemplate();
     // append to the section
-    $animalDiv.append(animalHtml)
+    $('main').append(animalHtml)
   });
-  $('main').append($animalDiv)
+
 })
 
 
-$('.allHornAnimalsButton2').click(() => {
-  $('#animal').remove();
-  let $animalDiv = $('<div id="animal"></div>')
+$('.allHornAnimals2Button').click(() => {
+  $('main').empty();
+console.log('button2')
   allHornAnimals2.forEach(value => {
     // will create html
     let animalHtml = value.toMustacheTemplate();
     // append to the section
-    $animalDiv.append(animalHtml)
+    $('main').append(animalHtml)
   });
-  $('main').append($animalDiv)
+
 })
 
